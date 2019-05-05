@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using HidLibrary;
@@ -107,9 +108,20 @@ namespace mi
 		private static void ManageControllers(ScpBus scpBus)
 		{
 			var nrConnected = 0;
+
+            // read all gamepad Pid and Vids 
+
+            var itype = typeof(IGamePad);
+
+           var pads= Assembly.GetEntryAssembly().GetTypes().Where(p => p.IsAssignableFrom(itype) && !p.IsInterface).ToList().Select(p=>Activator.CreateInstance(p) as IGamePad).ToList();
+
+
 			while (true)
 			{
-				var compatibleDevices = HidDevices.Enumerate(0x2717, 0x3144).ToList();
+                //Select(x => new HidDevice(x.Path, x.Description)).Where(x => x.Attributes.VendorId == vendorId && productIds.Contains(x.Attributes.ProductId));
+                var compatibleDevices  =HidDevices.Enumerate().Where(p=>pads.Exists(v=>v.Vid== p.Attributes.VendorId && v.Pid==p.Attributes.ProductId)).ToList();
+
+				//var compatibleDevices = HidDevices.Enumerate(0x2717, 0x3144).ToList();
 				var existingDevices = Gamepads.Select(g => g.Device).ToList();
 				var newDevices = compatibleDevices.Where(d => !existingDevices.Select(e => e.DevicePath).Contains(d.DevicePath));
 				foreach (var gamepad in Gamepads.ToList())
@@ -151,7 +163,10 @@ namespace mi
 						}
 					}
 
-					byte[] vibration = { 0x20, 0x00, 0x00 };
+                    var padDef = pads.FirstOrDefault(p =>p.Vid == device.Attributes.VendorId && p.Pid == device.Attributes.ProductId);
+
+                    byte[] vibration = padDef.Vibration;// { 0x20, 0x00, 0x00 };
+                    
 					if (device.WriteFeatureData(vibration) == false)
 					{
 						InformUser("Could not write to gamepad (is it closed?), skipping");
@@ -171,7 +186,12 @@ namespace mi
 					{
 						index++;
 					}
-					Gamepads.Add(new Xiaomi_gamepad(device, scpBus, index));
+
+                    IGamePad pad=Activator.CreateInstance(padDef.GetType()) as IGamePad;
+
+                    pad.InitPad(device, scpBus, index);
+
+					Gamepads.Add(pad);
 				}
 				if (Gamepads.Count != nrConnected)
 				{
@@ -185,7 +205,7 @@ namespace mi
 		{
 			NIcon.Text = "Export Datatable Utlity";
 			NIcon.Visible = true;
-			NIcon.BalloonTipTitle = "Mi controller";
+			NIcon.BalloonTipTitle = "B/U controller";
 			NIcon.BalloonTipText = text;
 			NIcon.ShowBalloonTip(100);
 			//var content = new ToastContent()
@@ -216,7 +236,7 @@ namespace mi
 			//ToastNotificationManager.CreateToastNotifier().Show(toast);
 		}
 
-		public static List<Xiaomi_gamepad> Gamepads { get; set; } = new List<Xiaomi_gamepad>();
+		public static List<IGamePad> Gamepads { get; set; } = new List<IGamePad>();
 
 		private static bool TryReEnableDevice(string deviceInstanceId)
 		{

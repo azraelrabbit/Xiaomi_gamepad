@@ -1,0 +1,266 @@
+SCP Driver Installer 1.2.2.175 [2016/1/27 12:29:31]
+
+Detected - Microsoft Windows 10 (6.2.9200.0 AMD64)
+Selected DEFAULT configuration.
+
+INFO    - ENTER:  DriverPackageInstallW
+INFO    - Looking for Model Section [SCProductions.NTamd64]...
+INFO    - Installing INF file 'D:\DS4Windows\Virtual Bus Driver\System\ScpVBus.inf' (Plug and Play).
+INFO    - Looking for Model Section [SCProductions.NTamd64]...
+INFO    - Installing devices with Id "root\ScpVBus" using INF "C:\WINDOWS\System32\DriverStore\FileRepository\scpvbus.inf_amd64_21ca245c0e23d7a5\scpvbus.inf".
+INFO    - Will force install because driver is not better and force flag is set.
+INFO    - ENTER UpdateDriverForPlugAndPlayDevices...
+SUCCESS - RETURN UpdateDriverForPlugAndPlayDevices.
+INFO    - Installation was successful.
+SUCCESS - Install completed
+INFO    - RETURN: DriverPackageInstallW  (0x0)
+
+Install Succeeded.
+
+-- Install Summary --
+Bus Driver
+
+
+
+SCP Driver Installer 1.2.2.175 [2016/1/27 12:29:59]
+
+Detected - Microsoft Windows 10 (6.2.9200.0 AMD64)
+Selected DEFAULT configuration.
+
+
+SCP Driver Installer 1.2.2.175 [2016/1/27 13:38:28]
+
+Detected - Microsoft Windows 10 (6.2.9200.0 AMD64)
+Selected DEFAULT configuration.
+
+INFO    - ENTER:  DriverPackageInstallW
+INFO    - Looking for Model Section [SCProductions.NTamd64]...
+INFO    - Installing INF file 'D:\DS4Windows\Virtual Bus Driver\System\ScpVBus.inf' (Plug and Play).
+INFO    - Looking for Model Section [SCProductions.NTamd64]...
+INFO    - Installing devices with Id "root\ScpVBus" using INF "C:\WINDOWS\System32\DriverStore\FileRepository\scpvbus.inf_amd64_21ca245c0e23d7a5\scpvbus.inf".
+INFO    - Will force install because driver is not better and force flag is set.
+INFO    - ENTER UpdateDriverForPlugAndPlayDevices...
+SUCCESS - RETURN UpdateDriverForPlugAndPlayDevices.
+INFO    - Installation was successful.
+SUCCESS - Install completed
+INFO    - RETURN: DriverPackageInstallW  (0x0)
+
+Install Succeeded. [Reboot Required]
+
+-- Install Summary --
+Bus Driver
+
+
+
+SCP Driver Installer 1.2.2.175 [2016/1/27 14:03:13]
+
+Detected - Microsoft Windows 10 (6.2.9200.0 AMD64)
+Selected DEFAULT configuration.
+
+SUCCESS - Virtual Bus Removed
+INFO    - ENTER:  DriverPackageUninstallW
+INFO    - Uninstalling driver package D:\DS4Windows\Virtual Bus Driver\System\ScpVBus.inf...
+INFO    - Successfully uninstalled 'C:\WINDOWS\INF\oem7.inf'.
+INFO    - No devices found for C:\WINDOWS\System32\DriverStore\FileRepository\scpvbus.inf_amd64_21ca245c0e23d7a5\scpvbus.inf uninstall.
+INFO    - Successfully deleted properties for driver store entry 'C:\WINDOWS\System32\DriverStore\FileRepository\scpvbus.inf_amd64_21ca245c0e23d7a5\scpvbus.inf'.
+SUCCESS - Uninstall completed.
+INFO    - RETURN: DriverPackageUninstallW  (0x0)
+
+Uninstall Succeeded.
+
+-- Uninstall Summary --
+Bus Device
+
+
+Uninstall Succeeded.
+
+-- Uninstall Summary --
+
+SUCCESS - Virtual Bus Created
+INFO    - ENTER:  DriverPackageInstallW
+INFO    - Looking for Model Section [SCProductions.NTamd64]...
+INFO    - Installing INF file 'D:\DS4Windows\Virtual Bus Driver\System\ScpVBus.inf' (Plug and Play).
+INFO    - Looking for Model Section [SCProductions.NTamd64]...
+INFO    - Installing devices with Id "root\ScpVBus" using INF "C:\WINDOWS\System32\DriverStore\FileRepository\scpvbus.inf_amd64_21ca245c0e23d7a5\ScpVBus.inf".
+INFO    - ENTER UpdateDriverForPlugAndPlayDevices...
+SUCCESS - RETURN UpdateDriverForPlugAndPlayDevices.
+INFO    - Installation was successful.
+SUCCESS - Install completed
+INFO    - RETURN: DriverPackageInstallW  (0x0)
+
+Install Succeeded.
+
+-- Install Summary --
+Bus Device
+Bus Driver
+
+
+
+SCP Driver Installer 1.2.2.175 [2016/1/27 14:03:35]
+
+Detected - Microsoft Windows 10 (6.2.9200.0 AMD64)
+Selected DEFAULT configuration.
+
+SUCCESS - Virtual Bus Removed
+INFO    - ENTER:  DriverPackageUninstallW
+INFO    - Uninstalling driver package D:\DS4Windows\Virtual Bus Driver\System\ScpVBus.inf...
+INFO    - Successfully uninstalled 'C:\WINDOWS\INF\oem7.inf'.
+INFO    - No devices found for C:\WINDOWS\System32\DriverStore\FileRepository\scpvbus.inf_amd64_21ca245c0e23d7a5\scpvbus.inf uninstall.
+INFO    - Successfully deleted properties for driver store entry 'C:\WINDOWS\System32\DriverStore\FileRepository\scpvbus.inf_amd64_21ca245c0e23d7a5\scpvbus.inf'.
+SUCCESS - Uninstall completed.
+INFO    - RETURN: DriverPackageUninstallW  (0x0)
+
+Uninstall Succeeded.
+
+-- Uninstall Summary --
+Bus Device
+
+SUCCESS - Virtual Bus Created
+INFO    - ENTER:  DriverPackageInstallW
+INFO    - Looking for Model Section [SCProductions.NTamd64]...
+INFO    - Installing INF file 'D:\DS4Windows\Virtual Bus Driver\System\ScpVBus.inf' (Plug and Play).
+INFO    - Looking for Model Section [SCProductions.NTamd64]...
+INFO    - Installing devices with Id "root\ScpVBus" using INF "C:\WINDOWS\System32\DriverStore\FileRepository\scpvbus.inf_amd64_21ca245c0e23d7a5\ScpVBus.inf".
+INFO    - ENTER UpdateDriverForPlugAndPlayDevices...
+SUCCESS - RETURN UpdateDriverForPlugAndPlayDevices.
+INFO    - Installation was successful.
+SUCCESS - Install completed
+INFO    - RETURN: DriverPackageInstallW  (0x0)
+
+Install Succeeded.
+
+-- Install Summary --
+Bus Device
+Bus Driver
+
+
+
+SCP Driver Installer 1.2.2.175 [2016/1/27 15:36:27]
+
+Detected - Microsoft Windows 10 (6.2.9200.0 AMD64)
+Selected DEFAULT configuration.
+
+INFO    - ENTER:  DriverPackageInstallW
+INFO    - Looking for Model Section [SCProductions.NTamd64]...
+INFO    - Installing INF file 'D:\DS4Windows\Virtual Bus Driver\System\ScpVBus.inf' (Plug and Play).
+INFO    - Looking for Model Section [SCProductions.NTamd64]...
+INFO    - Installing devices with Id "root\ScpVBus" using INF "C:\WINDOWS\System32\DriverStore\FileRepository\scpvbus.inf_amd64_21ca245c0e23d7a5\scpvbus.inf".
+INFO    - Will force install because driver is not better and force flag is set.
+INFO    - ENTER UpdateDriverForPlugAndPlayDevices...
+SUCCESS - RETURN UpdateDriverForPlugAndPlayDevices.
+INFO    - Installation was successful.
+SUCCESS - Install completed
+INFO    - RETURN: DriverPackageInstallW  (0x0)
+
+Install Succeeded. [Reboot Required]
+
+-- Install Summary --
+Bus Driver
+
+
+
+SCP Driver Installer 1.2.2.175 [2016/1/27 22:43:29]
+
+Detected - Microsoft Windows 10 (6.2.9200.0 AMD64)
+Selected DEFAULT configuration.
+
+
+SCP Driver Installer 1.2.2.175 [2016/9/1 19:58:33]
+
+Detected - Microsoft Windows 10 (6.2.9200.0 AMD64)
+Selected DEFAULT configuration.
+
+INFO    - ENTER:  DriverPackageInstallW
+INFO    - Looking for Model Section [SCProductions.NTamd64]...
+INFO    - Installing INF file 'E:\tools\betop\xiaomicontroller\DS4Windows\Virtual Bus Driver\System\ScpVBus.inf' (Plug and Play).
+INFO    - Looking for Model Section [SCProductions.NTamd64]...
+INFO    - Installing devices with Id "root\ScpVBus" using INF "C:\WINDOWS\System32\DriverStore\FileRepository\scpvbus.inf_amd64_21ca245c0e23d7a5\scpvbus.inf".
+INFO    - Will force install because driver is not better and force flag is set.
+INFO    - ENTER UpdateDriverForPlugAndPlayDevices...
+SUCCESS - RETURN UpdateDriverForPlugAndPlayDevices.
+INFO    - Installation was successful.
+SUCCESS - Install completed
+INFO    - RETURN: DriverPackageInstallW  (0x0)
+
+Install Succeeded. [Reboot Required]
+
+-- Install Summary --
+Bus Driver
+
+
+
+SCP Driver Installer 1.2.2.175 [2017/3/21 14:38:54]
+
+Detected - Microsoft Windows 10 (6.2.9200.0 AMD64)
+Selected DEFAULT configuration.
+
+SUCCESS - Virtual Bus Created
+INFO    - ENTER:  DriverPackageInstallW
+INFO    - Looking for Model Section [SCProductions.NTamd64]...
+INFO    - Installing INF file 'E:\tools\betop\betop-2171QN\DS4Windows\Virtual Bus Driver\System\ScpVBus.inf' (Plug and Play).
+INFO    - Looking for Model Section [SCProductions.NTamd64]...
+INFO    - Installing devices with Id "root\ScpVBus" using INF "C:\Windows\System32\DriverStore\FileRepository\scpvbus.inf_amd64_21ca245c0e23d7a5\ScpVBus.inf".
+INFO    - ENTER UpdateDriverForPlugAndPlayDevices...
+SUCCESS - RETURN UpdateDriverForPlugAndPlayDevices.
+INFO    - Installation was successful.
+SUCCESS - Install completed
+INFO    - RETURN: DriverPackageInstallW  (0x0)
+
+Install Succeeded.
+
+-- Install Summary --
+Bus Device
+Bus Driver
+
+
+
+SCP Driver Installer 1.2.2.175 [2017/7/9 13:22:39]
+
+Detected - Microsoft Windows 10 (6.2.9200.0 AMD64)
+Selected DEFAULT configuration.
+
+SUCCESS - Virtual Bus Created
+INFO    - ENTER:  DriverPackageInstallW
+INFO    - Looking for Model Section [SCProductions.NTamd64]...
+INFO    - Installing INF file 'E:\tools\betop\betop-2171QN\DS4Windows\Virtual Bus Driver\System\ScpVBus.inf' (Plug and Play).
+INFO    - Looking for Model Section [SCProductions.NTamd64]...
+INFO    - Installing devices with Id "root\ScpVBus" using INF "C:\Windows\System32\DriverStore\FileRepository\scpvbus.inf_amd64_21ca245c0e23d7a5\ScpVBus.inf".
+INFO    - ENTER UpdateDriverForPlugAndPlayDevices...
+SUCCESS - RETURN UpdateDriverForPlugAndPlayDevices.
+INFO    - Installation was successful.
+SUCCESS - Install completed
+INFO    - RETURN: DriverPackageInstallW  (0x0)
+
+Install Succeeded.
+
+-- Install Summary --
+Bus Device
+Bus Driver
+
+
+
+SCP Driver Installer 1.2.2.175 [2019/5/5 17:46:35]
+
+Detected - Microsoft Windows 10 (6.2.9200.0 AMD64)
+Selected DEFAULT configuration.
+
+SUCCESS - Virtual Bus Created
+INFO    - ENTER:  DriverPackageInstallW
+INFO    - Looking for Model Section [SCProductions.NTamd64]...
+INFO    - Installing INF file 'D:\WorkRoot\Open\github\Xiaomi_gamepad\publish\Virtual Bus Driver\System\ScpVBus.inf' (Plug and Play).
+INFO    - Looking for Model Section [SCProductions.NTamd64]...
+INFO    - Installing devices with Id "root\ScpVBus" using INF "C:\Windows\System32\DriverStore\FileRepository\scpvbus.inf_amd64_21ca245c0e23d7a5\ScpVBus.inf".
+INFO    - ENTER UpdateDriverForPlugAndPlayDevices...
+SUCCESS - RETURN UpdateDriverForPlugAndPlayDevices.
+INFO    - Installation was successful.
+SUCCESS - Install completed
+INFO    - RETURN: DriverPackageInstallW  (0x0)
+
+Install Succeeded.
+
+-- Install Summary --
+Bus Device
+Bus Driver
+
+
+

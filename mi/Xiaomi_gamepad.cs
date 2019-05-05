@@ -1,38 +1,67 @@
 using System;
 using System.Threading;
+using System.Windows.Forms;
 using HidLibrary;
 using ScpDriverInterface;
 
 namespace mi
 {
-	public class Xiaomi_gamepad
+	public class Xiaomi_gamepad:IGamePad
 	{
 		public HidDevice Device { get; set; }
-		public int Index;
+		public int Index { get;  set; }
+
 		private Thread rThread, iThread;
 		private ScpBus ScpBus;
-		private byte[] Vibration = { 0x20, 0x00, 0x00 };
+		
 		private Mutex rumble_mutex = new Mutex();
 		private bool Running = true;
-		//private byte[] enableAccelerometer = { 0x31, 0x01, 0x08 };
 
-		public Xiaomi_gamepad(HidDevice device, ScpBus scpBus, int index)
-		{
-			Index = index;
-			ScpBus = scpBus;
-			Device = device;
-			Device.WriteFeatureData(Vibration);
+        public byte[] Vibration => new byte[] {0x20, 0x00, 0x00};
+ 
+        public int Pid { get=> 0x3144;  }
 
-			rThread = new Thread(() => rumble_thread(Device));
-			// rThread.Priority = ThreadPriority.BelowNormal; 
-			rThread.Start();
+        public int Vid { get=> 0x2717;   }
 
-			iThread = new Thread(() => input_thread(Device, scpBus, index));
-			iThread.Priority = ThreadPriority.Highest;
-			iThread.Start();
-		}
+     
 
-		public bool check_connected()
+
+
+        //private byte[] enableAccelerometer = { 0x31, 0x01, 0x08 };
+
+  //      public Xiaomi_gamepad(HidDevice device, ScpBus scpBus, int index)
+		//{
+		//	Index = index;
+		//	ScpBus = scpBus;
+		//	Device = device;
+		//	Device.WriteFeatureData(Vibration);
+
+		//	rThread = new Thread(() => rumble_thread(Device));
+		//	// rThread.Priority = ThreadPriority.BelowNormal; 
+		//	rThread.Start();
+
+		//	iThread = new Thread(() => input_thread(Device, scpBus, index));
+		//	iThread.Priority = ThreadPriority.Highest;
+		//	iThread.Start();
+		//}
+
+        public void InitPad(HidDevice device, ScpBus scpBus, int index)
+        {
+            Index = index;
+            ScpBus = scpBus;
+            Device = device;
+            Device.WriteFeatureData(Vibration);
+
+            rThread = new Thread(() => rumble_thread(Device));
+            // rThread.Priority = ThreadPriority.BelowNormal; 
+            rThread.Start();
+
+            iThread = new Thread(() => input_thread(Device, scpBus, index));
+            iThread.Priority = ThreadPriority.Highest;
+            iThread.Start();
+        }
+
+        public bool check_connected()
 		{
 			return Device.WriteFeatureData(Vibration);
 		}

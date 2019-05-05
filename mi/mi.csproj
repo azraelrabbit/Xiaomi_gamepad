@@ -84,6 +84,7 @@
     <Compile Include="HidLibrary\RemovedEventHandler.cs" />
     <Compile Include="HidLibrary\ShareMode.cs" />
     <Compile Include="HidLibrary\WriteCallback.cs" />
+    <Compile Include="IGamePad.cs" />
     <Compile Include="ProcessIcon.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="ScpDriverInterface\ScpBus.cs" />
     <Compile Include="ScpDriverInterface\X360Buttons.cs" />
     <Compile Include="ScpDriverInterface\X360Controller.cs" />
+    <Compile Include="Betop2171QN.cs" />
     <Compile Include="Xiaomi_gamepad.cs" />
   </ItemGroup>
   <ItemGroup>
