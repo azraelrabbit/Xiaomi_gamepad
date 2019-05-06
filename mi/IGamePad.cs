@@ -14,6 +14,8 @@ namespace mi
 
         int Vid { get;  }
 
+        bool HasVibration { get; }
+
 
         byte[] Vibration { get;   }
         HidDevice Device { get; }

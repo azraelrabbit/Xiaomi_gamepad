@@ -23,27 +23,28 @@ namespace mi
 
         public int Vid { get=> 0x2717;   }
 
-     
+
+	    public bool HasVibration => true;
 
 
 
         //private byte[] enableAccelerometer = { 0x31, 0x01, 0x08 };
 
-  //      public Xiaomi_gamepad(HidDevice device, ScpBus scpBus, int index)
-		//{
-		//	Index = index;
-		//	ScpBus = scpBus;
-		//	Device = device;
-		//	Device.WriteFeatureData(Vibration);
+        //      public Xiaomi_gamepad(HidDevice device, ScpBus scpBus, int index)
+        //{
+        //	Index = index;
+        //	ScpBus = scpBus;
+        //	Device = device;
+        //	Device.WriteFeatureData(Vibration);
 
-		//	rThread = new Thread(() => rumble_thread(Device));
-		//	// rThread.Priority = ThreadPriority.BelowNormal; 
-		//	rThread.Start();
+        //	rThread = new Thread(() => rumble_thread(Device));
+        //	// rThread.Priority = ThreadPriority.BelowNormal; 
+        //	rThread.Start();
 
-		//	iThread = new Thread(() => input_thread(Device, scpBus, index));
-		//	iThread.Priority = ThreadPriority.Highest;
-		//	iThread.Start();
-		//}
+        //	iThread = new Thread(() => input_thread(Device, scpBus, index));
+        //	iThread.Priority = ThreadPriority.Highest;
+        //	iThread.Start();
+        //}
 
         public void InitPad(HidDevice device, ScpBus scpBus, int index)
         {

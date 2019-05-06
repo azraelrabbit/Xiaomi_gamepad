@@ -23,34 +23,34 @@ namespace mi
 
         public int Vid { get=> 0x20BC;   }
 
-     
+	    public bool HasVibration => false;
 
 
 
         //private byte[] enableAccelerometer = { 0x31, 0x01, 0x08 };
 
-  //      public Xiaomi_gamepad(HidDevice device, ScpBus scpBus, int index)
-		//{
-		//	Index = index;
-		//	ScpBus = scpBus;
-		//	Device = device;
-		//	Device.WriteFeatureData(Vibration);
+        //      public Xiaomi_gamepad(HidDevice device, ScpBus scpBus, int index)
+        //{
+        //	Index = index;
+        //	ScpBus = scpBus;
+        //	Device = device;
+        //	Device.WriteFeatureData(Vibration);
 
-		//	rThread = new Thread(() => rumble_thread(Device));
-		//	// rThread.Priority = ThreadPriority.BelowNormal; 
-		//	rThread.Start();
+        //	rThread = new Thread(() => rumble_thread(Device));
+        //	// rThread.Priority = ThreadPriority.BelowNormal; 
+        //	rThread.Start();
 
-		//	iThread = new Thread(() => input_thread(Device, scpBus, index));
-		//	iThread.Priority = ThreadPriority.Highest;
-		//	iThread.Start();
-		//}
+        //	iThread = new Thread(() => input_thread(Device, scpBus, index));
+        //	iThread.Priority = ThreadPriority.Highest;
+        //	iThread.Start();
+        //}
 
         public void InitPad(HidDevice device, ScpBus scpBus, int index)
         {
             Index = index;
             ScpBus = scpBus;
             Device = device;
-            Device.WriteFeatureData(Vibration);
+            //Device.WriteFeatureData(Vibration);
 
             rThread = new Thread(() => rumble_thread(Device));
             // rThread.Priority = ThreadPriority.BelowNormal; 
@@ -62,9 +62,9 @@ namespace mi
         }
 
         public bool check_connected()
-		{
-			return Device.WriteFeatureData(Vibration);
-		}
+        {
+            return Device.IsConnected;
+        }
 
 		public void unplug()
 		{
@@ -109,7 +109,7 @@ namespace mi
 				HidDeviceData data = Device.Read(timeout);
 				var currentState = data.Data;
 				bool changed = false;
-				if (data.Status == HidDeviceData.ReadStatus.Success && currentState.Length >= 21 && currentState[0] == 4)
+				if (data.Status == HidDeviceData.ReadStatus.Success && currentState.Length >= 21 && currentState[0] == 3)
 				{
 					//Console.WriteLine(Program.ByteArrayToHexString(currentState));
 					X360Buttons Buttons = X360Buttons.None;

@@ -113,13 +113,13 @@ namespace mi
 
             var itype = typeof(IGamePad);
 
-           var pads= Assembly.GetEntryAssembly().GetTypes().Where(p => p.IsAssignableFrom(itype) && !p.IsInterface).ToList().Select(p=>Activator.CreateInstance(p) as IGamePad).ToList();
+           var pads= Assembly.GetEntryAssembly().GetTypes().Where(p => p.GetInterface(nameof(IGamePad))==itype && !p.IsInterface).ToList().Select(p=>Activator.CreateInstance(p) as IGamePad).ToList();
 
 
 			while (true)
 			{
                 //Select(x => new HidDevice(x.Path, x.Description)).Where(x => x.Attributes.VendorId == vendorId && productIds.Contains(x.Attributes.ProductId));
-                var compatibleDevices  =HidDevices.Enumerate().Where(p=>pads.Exists(v=>v.Vid== p.Attributes.VendorId && v.Pid==p.Attributes.ProductId)).ToList();
+                var compatibleDevices  =HidDevices.Enumerate().Where(p=>pads.Exists(v=>v.Vid== p.Attributes.VendorId && v.Pid==p.Attributes.ProductId&&p.Description.ToLower().Contains("game controller".ToLower()))).ToList();
 
 				//var compatibleDevices = HidDevices.Enumerate(0x2717, 0x3144).ToList();
 				var existingDevices = Gamepads.Select(g => g.Device).ToList();
@@ -165,16 +165,20 @@ namespace mi
 
                     var padDef = pads.FirstOrDefault(p =>p.Vid == device.Attributes.VendorId && p.Pid == device.Attributes.ProductId);
 
-                    byte[] vibration = padDef.Vibration;// { 0x20, 0x00, 0x00 };
-                    
-					if (device.WriteFeatureData(vibration) == false)
-					{
-						InformUser("Could not write to gamepad (is it closed?), skipping");
-						device.CloseDevice();
-						continue;
-					}
+				    if (padDef.HasVibration)
+				    {
+				        byte[] vibration = padDef.Vibration;// { 0x20, 0x00, 0x00 };
 
-					byte[] serialNumber;
+				        if (device.WriteFeatureData(vibration) == false)
+				        {
+				            InformUser("Could not write to gamepad (is it closed?), skipping");
+				            device.CloseDevice();
+				            continue;
+				        }
+
+                    }
+
+                    byte[] serialNumber;
 					byte[] product;
 					device.ReadSerialNumber(out serialNumber);
 					device.ReadProduct(out product);
@@ -234,6 +238,7 @@ namespace mi
 
 			//// Display toast
 			//ToastNotificationManager.CreateToastNotifier().Show(toast);
+		    Console.WriteLine(text);
 		}
 
 		public static List<IGamePad> Gamepads { get; set; } = new List<IGamePad>();
