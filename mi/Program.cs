@@ -56,6 +56,7 @@ namespace mi
 			Thread.Sleep(400);
 			var controllersManager = new Thread(() => ManageControllers(scpBus));
 
+            Application.ApplicationExit += Application_ApplicationExit;
 
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
@@ -69,6 +70,7 @@ namespace mi
 						pi.Display();
 						controllersManager.Start();
 						Application.Run();
+                        
 					}
 				}
 				catch (Exception ex)
@@ -90,7 +92,12 @@ namespace mi
 			}
 		}
 
-		public static NotifyIcon NIcon { get; set; }
+        private static void Application_ApplicationExit(object sender, EventArgs e)
+        {
+           //todo://
+        }
+
+        public static NotifyIcon NIcon { get; set; }
 
 		private static bool IsSingleInstance()
 		{
@@ -195,6 +202,7 @@ namespace mi
 
                     pad.InitPad(device, scpBus, index);
 
+				    nrConnected++;
 					Gamepads.Add(pad);
 				}
 				if (Gamepads.Count != nrConnected)

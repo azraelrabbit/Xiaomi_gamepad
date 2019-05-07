@@ -104,10 +104,21 @@ namespace mi
 			int timeout = 30;
 			long last_changed = 0;
 			long last_mi_button = 0;
+
+		    byte[] normalStatus = new byte[22];
+           
+
+		    //byte[] lastState=null;
 			while (Running)
 			{
 				HidDeviceData data = Device.Read(timeout);
 				var currentState = data.Data;
+
+			    //if (lastState != null)
+			    //{
+       //             if(currentState[1]==lastState[1] && currentState[2]==lastState[2] && )
+			    //}
+                
 				bool changed = false;
 				if (data.Status == HidDeviceData.ReadStatus.Success && currentState.Length >= 21 && currentState[0] == 3)
 				{
@@ -136,11 +147,18 @@ namespace mi
 
 
 
-					if ((currentState[20] & 1) != 0)
-					{
-						last_mi_button = (DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond);
-						Buttons |= X360Buttons.Logo;
-					}
+                    //if ((currentState[20] & 1) != 0)
+                    //{
+                    //	last_mi_button = (DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond);
+                    //	Buttons |= X360Buttons.Logo;
+                    //}
+
+				    if (currentState[2] == 12)
+				    {
+				        last_mi_button = (DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond);
+				        Buttons |= X360Buttons.Logo;
+                    }
+
 					if (last_mi_button != 0) Buttons |= X360Buttons.Logo;
 
 
@@ -217,29 +235,32 @@ namespace mi
 					byte[] outputReport = new byte[8];
 					scpBus.Report(index, controller.GetReport(), outputReport);
 
-					if (outputReport[1] == 0x08)
-					{
-						byte bigMotor = outputReport[3];
-						byte smallMotor = outputReport[4];
-						rumble_mutex.WaitOne();
-						if (bigMotor != Vibration[2] || Vibration[1] != smallMotor)
-						{
-							Vibration[1] = smallMotor;
-							Vibration[2] = bigMotor;
-						}
-						rumble_mutex.ReleaseMutex();
-					}
+				    if (HasVibration)
+				    {
+				        if (outputReport[1] == 0x08)
+				        {
+				            byte bigMotor = outputReport[3];
+				            byte smallMotor = outputReport[4];
+				            rumble_mutex.WaitOne();
+				            if (bigMotor != Vibration[2] || Vibration[1] != smallMotor)
+				            {
+				                Vibration[1] = smallMotor;
+				                Vibration[2] = bigMotor;
+				            }
+				            rumble_mutex.ReleaseMutex();
+				        }
+                    }
 
-					if (last_mi_button != 0)
-					{
-						if ((last_mi_button + 100) < (DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond))
-						{
-							last_mi_button = 0;
-							controller.Buttons ^= X360Buttons.Logo;
-						}
-					}
+				    if (last_mi_button != 0)
+				    {
+				        if ((last_mi_button + 100) < (DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond))
+				        {
+				            last_mi_button = 0;
+				            controller.Buttons ^= X360Buttons.Logo;
+				        }
+				    }
 
-					last_changed = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
+                    last_changed = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
 				}
 			}
 		}
